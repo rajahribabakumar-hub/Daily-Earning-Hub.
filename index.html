@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Daily Earning Hub — Online Earning Tips & Tools</title>
+
+<meta name="description" content="Learn how to earn money online using mobile. Free tools, tips and earning methods.">
+
+<style>
+body{
+font-family: Arial;
+margin:0;
+background:#f4f6f8;
+text-align:center;
+}
+
+header{
+background:#198754;
+color:white;
+padding:20px;
+}
+
+.container{
+max-width:800px;
+margin:20px auto;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+button{
+padding:12px 20px;
+background:#198754;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+margin-top:10px;
+}
+
+.result{
+margin-top:15px;
+background:#eee;
+padding:15px;
+border-radius:6px;
+}
+
+footer{
+background:#222;
+color:white;
+padding:15px;
+margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Daily Earning Hub</h1>
+<p>Learn Online Earning from Mobile</p>
+</header>
+
+<div class="container">
+
+<h2>Welcome</h2>
+
+<p>
+This website shares simple ways to earn money online using mobile phone.
+We provide tips, tools and useful information for beginners.
+</p>
+
+</div>
+
+<div class="container">
+
+<h2>Quick Earning Calculator</h2>
+
+<p>Enter how many hours you work daily</p>
+
+<input type="number" id="hours" placeholder="Hours per day">
+
+<br>
+
+<button onclick="calculate()">Calculate Monthly Income</button>
+
+<div class="result" id="output"></div>
+
+</div>
+
+<div class="container">
+
+<h2>Popular Topics</h2>
+
+<ul style="text-align:left">
+<li>How to Earn Money from Mobile</li>
+<li>Best Apps for Online Income</li>
+<li>Work from Home Ideas</li>
+<li>Student Earning Tips</li>
+</ul>
+
+</div>
+
+<footer>
+<p>© 2026 Daily Earning Hub</p>
+</footer>
+
+<script>
+function calculate() {
+let hours = document.getElementById("hours").value;
+let income = hours * 100 * 30;
+document.getElementById("output").textContent =
+"Estimated Monthly Income: ₹" + income;
+}
+</script>
+
+</body>
+</html>
