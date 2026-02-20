@@ -1,77 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Smart Tools India — Free Online Text Tools</title>
+<title>Shayari Story Generator — Topic Based Shayari</title>
 
-<meta name="description" content="Free online text tools for mobile users in India. Text repeater, fancy text, case converter and word counter.">
+<meta name="description" content="Search shayari by topic. Love, sad, attitude and more.">
 
 <style>
 body{
-font-family: Arial, sans-serif;
-margin:0;
+font-family: Arial;
 background:#f4f6f8;
+margin:0;
+text-align:center;
 }
 
 header{
-background:#0d6efd;
+background:#ff3366;
 color:white;
-text-align:center;
 padding:20px;
 }
 
 .container{
-max-width:900px;
-margin:20px auto;
+max-width:800px;
+margin:30px auto;
 background:white;
-padding:20px;
+padding:25px;
 border-radius:10px;
 box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
-textarea{
-width:100%;
-height:120px;
-padding:10px;
-margin-top:10px;
-}
-
 input{
-padding:10px;
-margin:10px 0;
-width:150px;
+width:90%;
+padding:15px;
+font-size:18px;
 }
 
 button{
-padding:12px 18px;
-background:#0d6efd;
+padding:15px 25px;
+background:#ff3366;
 color:white;
 border:none;
 border-radius:6px;
+margin-top:15px;
+font-size:16px;
 cursor:pointer;
-margin:5px;
 }
 
 .result{
-margin-top:15px;
+margin-top:20px;
 background:#eee;
-padding:15px;
-border-radius:6px;
+padding:20px;
+border-radius:8px;
 white-space:pre-wrap;
+font-size:18px;
 }
 
-footer{
-text-align:center;
-background:#222;
-color:white;
-padding:15px;
-margin-top:30px;
-}
-
-h2{
-color:#0d6efd;
+#loading{
+color:#ff3366;
+font-weight:bold;
+margin-top:15px;
 }
 </style>
 </head>
@@ -79,98 +68,78 @@ color:#0d6efd;
 <body>
 
 <header>
-<h1>Smart Tools India</h1>
-<p>Free Online Tools for Everyone</p>
+<h1>Shayari Story Generator</h1>
+<p>Topic डालो — Shayari पाओ</p>
 </header>
 
 <div class="container">
 
-<h2>Text Repeater</h2>
+<input id="topic" placeholder="यहाँ शायरी सर्च करो (Love, Sad, Attitude...)">
 
-<textarea id="text1" placeholder="Type text here"></textarea>
-<input type="number" id="count1" placeholder="Times">
 <br>
-<button onclick="repeatText()">Repeat</button>
 
-<div class="result" id="output1"></div>
+<button onclick="generate()">Search Shayari</button>
+
+<div id="loading"></div>
+
+<div class="result" id="output"></div>
+
+<button onclick="copyText()">Copy Shayari</button>
 
 </div>
-
-
-<div class="container">
-
-<h2>Fancy Text Generator</h2>
-
-<textarea id="text2" placeholder="Type text"></textarea>
-<br>
-<button onclick="fancyText()">Generate</button>
-
-<div class="result" id="output2"></div>
-
-</div>
-
-
-<div class="container">
-
-<h2>Case Converter</h2>
-
-<textarea id="text3" placeholder="Type text"></textarea>
-<br>
-<button onclick="toUpper()">UPPERCASE</button>
-<button onclick="toLower()">lowercase</button>
-
-<div class="result" id="output3"></div>
-
-</div>
-
-
-<div class="container">
-
-<h2>Word Counter</h2>
-
-<textarea id="text4" placeholder="Type text"></textarea>
-<br>
-<button onclick="countWords()">Count Words</button>
-
-<div class="result" id="output4"></div>
-
-</div>
-
-
-<footer>
-<p>© 2026 Smart Tools India</p>
-</footer>
-
 
 <script>
 
-function repeatText(){
-let text=document.getElementById("text1").value;
-let count=document.getElementById("count1").value;
-let result="";
-for(let i=0;i<count;i++){ result+=text+"\n"; }
-document.getElementById("output1").textContent=result;
+const shayari = {
+
+love: [
+"तेरी मुस्कान ही मेरी पहचान है ❤️",
+"तुम मिले तो जिंदगी मिल गई 💕",
+"तुम हो तो हर पल खास है 💖"
+],
+
+sad: [
+"कुछ लोग याद बनकर रह जाते हैं 💔",
+"खामोशी भी दर्द बयान करती है 😢",
+"दिल टूटा है मगर मुस्कुरा रहे हैं 😔"
+],
+
+attitude: [
+"हमसे जलने वाले भी कमाल करते हैं 😎",
+"जो हमसे टकराएगा वो मिट जाएगा 🔥",
+"हम अपने दम पर चलते हैं 💪"
+]
+
+};
+
+function generate(){
+
+let topic = document.getElementById("topic").value.toLowerCase();
+
+document.getElementById("output").textContent = "";
+document.getElementById("loading").textContent = "Searching... Please wait ⏳";
+
+setTimeout(() => {
+
+document.getElementById("loading").textContent = "";
+
+if(shayari[topic]){
+let list = shayari[topic];
+let text = list[Math.floor(Math.random()*list.length)];
+document.getElementById("output").textContent = text;
+}else{
+document.getElementById("output").textContent =
+"इस टॉपिक पर शायरी नहीं मिली 😔";
 }
 
-function fancyText(){
-let text=document.getElementById("text2").value;
-document.getElementById("output2").textContent=text.split('').join(' ');
+}, 2000);
+
 }
 
-function toUpper(){
-let text=document.getElementById("text3").value;
-document.getElementById("output3").textContent=text.toUpperCase();
-}
-
-function toLower(){
-let text=document.getElementById("text3").value;
-document.getElementById("output3").textContent=text.toLowerCase();
-}
-
-function countWords(){
-let text=document.getElementById("text4").value.trim();
-let words=text.split(/\s+/).length;
-document.getElementById("output4").textContent="Words: "+words;
+function copyText(){
+let text = document.getElementById("output").textContent;
+navigator.clipboard.writeText(text);
+alert("Copied!");
 }
 
 </script>
